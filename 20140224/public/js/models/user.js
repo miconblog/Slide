@@ -6,6 +6,7 @@ app.Models = app.Models || {};
   'use strict';
 
   app.Models.UserModel = Backbone.Model.extend({
+    idAttribute : "id",
     defaults : {
       name : "someone",
       email: "someone@email.com"
@@ -16,8 +17,26 @@ app.Models = app.Models || {};
       return this.urlRoot;
     },
     parse : function(response, options){
-      console.log("===> parse of model ", response, options)
+      console.log("===> parse of model ", response, options);
+      return {
+        id : 1,
+        data: response
+      }
     },
+
+    /**
+     * validate 함수가 정의 되면 서버로 호출되기전에 유효성을 검사한다. 
+     *   - set함수 호출시 {validate:true} 옵션이 있으면 자동 호출된다. 
+     *   - false 값이 아닌 값을 반환하면 서버로 호출되지 않는다. 
+     *   - 반환되는 값이 invalid 이벤트에 실려 발생된다. 
+     *   - 디버깅을 위해 마지막에 발생한 invalid 이벤트의 메시지가 
+     *     validationError 속성에 저장된다.
+     *
+     */
+    // validate: function(attributes, options){
+    //   console.log("===> validate of model");
+    //   return true;
+    // },
     /**
      * sync 함수가 정의되면, Backbone.sync 의 기본 동작을 덮어 쓴다.
      * 

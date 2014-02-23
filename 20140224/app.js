@@ -32,8 +32,8 @@ app.configure('development', function(){
 app.get('/', routes.index);
 app.get('/users', user.list);
 app.post('/users', user.add);
-app.put('/users/:id', user.update);
-app.delete('/users/:id', user.remove);
+app.put('/users', user.update);
+app.delete('/users', user.remove);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

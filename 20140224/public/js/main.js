@@ -11,6 +11,12 @@ window.app = {
         
         var model = new app.Models.UserModel();
 
+        model.on("invalid", function(model, error, options){
+
+            console.log("### INVALID from app's model\n", error);
+
+        });
+
         model.on("request", function(model, xhr, options){
             console.log("### REQUEST from app's model\n", model, xhr, options);
         });
