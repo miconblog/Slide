@@ -8,7 +8,7 @@ window.app = {
     Routers: {},
     init: function () {
         'use strict';
-
+        console.log("--- main application init --- ");
     }
 };
 
