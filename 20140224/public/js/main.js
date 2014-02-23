@@ -22,6 +22,12 @@ window.app = {
         });
         model.fetch();
         console.log("--- main application init --- ");
+
+
+        new app.Views.UserView({
+            model : model
+        });
+
     }
 };
 

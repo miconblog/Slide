@@ -4,9 +4,12 @@ block content
   h1= title
   p Welcome to #{title}
 
+  #main
+    button.add ADD 
+
   <script src="components/jquery/dist/jquery.js"></script>
   <script src="components/underscore/underscore.js"></script>
   <script src="components/backbone/backbone.js"></script>
   script(src="/js/main.js")
   script(src="/js/models/user.js")
-  
+  script(src="/js/views/user.js")

@@ -1,4 +1,4 @@
-/*global backboneTEST, Backbone*/
+/*global app, Backbone*/
 
 app.Models = app.Models || {};
 
