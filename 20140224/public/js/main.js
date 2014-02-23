@@ -8,6 +8,9 @@ window.app = {
     Routers: {},
     init: function () {
         'use strict';
+        
+        new app.Models.UserModel();
+
         console.log("--- main application init --- ");
     }
 };
