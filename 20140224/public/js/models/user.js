@@ -13,16 +13,21 @@ app.Models = app.Models || {};
     },
     urlRoot : "/users",
     url : function(){
-      console.log("urlRoot: ", this.urlRoot)
-      return this.urlRoot;
-    },
-    parse : function(response, options){
-      console.log("===> parse of model ", response, options);
-      return {
-        id : 1,
-        data: response
+      console.log("urlRoot: ", this.urlRoot);
+
+      if(this.id){
+        return [this.urlRoot, this.id].join("/");
+      }else{
+        return this.urlRoot;
       }
     },
+    // parse : function(response, options){
+    //   console.log("===> parse of model ", response, options);
+    //   return {
+    //     id : 1,
+    //     data: response
+    //   }
+    // },
 
     /**
      * validate 함수가 정의 되면 서버로 호출되기전에 유효성을 검사한다. 

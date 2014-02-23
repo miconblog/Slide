@@ -30,7 +30,7 @@ exports.update = function(req, res){
 };
 
 exports.remove = function(req, res){
-  console.log("DELETE ID: ", req.body.id);
+  console.log("DELETE ID: ", req.params.id);
   res.json({
     success: "OK"
   })
