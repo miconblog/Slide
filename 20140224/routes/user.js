@@ -4,7 +4,15 @@
  */
 
 exports.list = function(req, res){
-  res.send("respond with a resource");
+  res.json([{
+    id : 1,
+    name : "Sohn",
+    email: "miconblog@gmail.com"
+  }, {
+    id : 2,
+    name : "Kim",
+    email: "kim@email.com"
+  }])
 };
 
 exports.add = function(req, res){

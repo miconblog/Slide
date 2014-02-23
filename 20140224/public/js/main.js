@@ -9,8 +9,8 @@ window.app = {
     init: function () {
         'use strict';
         
-        new app.Models.UserModel();
-
+        var model = new app.Models.UserModel();
+        model.fetch();
         console.log("--- main application init --- ");
     }
 };
