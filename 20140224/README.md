@@ -52,7 +52,8 @@
  - 즉, 개발자가 원하는 형태로 모델을 정의할 수 있다.
  - Collection을 쓰지 않고, 모델 그 자체를 Collection 형태로 쓸 수도 있다.
  - 아래와 같은 구조로 파일과 폴더를 만든다.
- ```
+
+```
    + views
    + public
       + js
@@ -60,9 +61,10 @@
             - user.js
          + views
       - main.js
- ```
+```
+
  - public/js/main.js는 아래와 같이 작성한다.
- ```
+```
  window.app = {
      Models: {},
      Collections: {},
@@ -79,9 +81,9 @@
      'use strict';
      app.init();
  });
- ```
+```
  - public/js/models/user.js 는 아래와 같이 작성한다.
- ```
+```
  app.Models = app.Models || {};
 
  (function () {
@@ -93,9 +95,9 @@
          }
      });
  })();
- ```
+```
  - views/index.jade에 아래와 같이 링크를 추가한다.
- ```
+```
  extends layout
  block content
      h1= title
@@ -109,7 +111,7 @@
    // 보통은 태그를 축약해서 사용한다.
    script(src="/js/main.js")
    script(src="/js/models/user.js")
- ```
+```
  - 브라우저에서 실행해 동작을 확인해보자!
  > [http://localhost:3000][100]
 
