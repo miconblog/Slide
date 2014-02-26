@@ -225,7 +225,9 @@
  - 응답을 받으면 모델에 저장 되기 전에  model의 parse 함수를 거친다.
  - 모델에 응답받은 데이터가 저장되면 최종적으로 SYNC 이벤트를 발생시킨다.
  - 정리하면,
-  > REQUEST from model --> parse() of model --> SYNC from model
+ 
+ >    REQUEST from model --> parse() of model --> SYNC from model
+  
  - 동작확인을 위한 트레이스 코드를 public/js/main.js 파일에 심어본다.
 ```
  init: function () {
