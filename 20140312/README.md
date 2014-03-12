@@ -196,7 +196,7 @@ watch: {
   }
 }
 ```
-watch 항목은 좀 긴데,.. 쉽게 얘기하면 변경된 파일을 감시하고, 변경이 일어나면 서버를 재구동시켜준다. 결국 자동으로 생성된 기본 프로젝트는 grunt 명령과 함께 서버를 실행하고 변경 파일을 감지해 서버를 재시작해준다. 그럼 그런트를 실행하고 localhost:3000 으로 접속해보자. 
+watch 항목은 좀 긴데,.. 쉽게 얘기하면 변경된 파일을 감시하고, 변경이 일어나면 서버를 재구동시켜준다. 결국 자동으로 생성된 기본 프로젝트는 grunt 명령과 함께 서버를 실행하고 변경 파일을 감지해 서버를 재시작해준다. 그럼 그런트를 실행하고 [localhost:3000][5] 으로 접속해보자. 
 ```
 $> grunt
 
@@ -206,6 +206,94 @@ Running "develop:server" (develop) task
 Running "watch" task
 Waiting...Express server listening on port 3000
 ```
+## 간단한 RESTful API 서버 만들기
+일단 기본 페이지에 지원하는 API 목록을 나열해주는 페이지를 만들어보자. views/index.jade 파일을 열어 ul 항목을 추가해준다.
+
+```
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  ul
+    li '/' - API 목록
+
+```
+위와 같이 추가하면 자동으로 watch 태스크가 변경을 감지하고 있다가 서버를 리로드하면서 브라우저도 리프레쉬 해줄것이다. 
+
+```
+>> File "views/index.jade" changed.
+
+Running "watch" task
+... Reload views/index.jade ...
+Completed in 0.008s at Wed Mar 12 2014 15:11:14 GMT+0900 (KST) - Waiting...
+```
+
+#### bower를 이용한 라이브러리 가져오기
+이번에는 자주 쓰이는 jquery와 underscore, momentjs 같은 라이브러리들을 가져와보자. 과거에는 해당 홈페이지에서 소스를 긁어오거나 다운로드 혹은 링크를 복사해서 삽입했었다. 하지만 이제는 커맨드 라인 명령어로 최신소스를 받아올수있다.
+
+bower를 사용하기 전에 먼저 .bowerrc 파일을 열어 받아온 소스를 어디에 설치하는지 확인해보자. 
+```
+$> cat .bowerrc
+
+{
+  "directory": "public/components",
+  "json": "bower.json"
+}
+```
+위와 같이 설정된 위치는 실행되는 루트 폴더를 기준으로 **public/components** 폴더에 설치된다. 위치를 파악했으니 이제는 필요한 라이브러리를 설치하자.
+```
+$> bower install jquery underscore moment
+.. 중략 ..
+
+$> ls public/components
+jquery/     moment/     underscore/
+```
+이제 설치된 소스를 index 페이지에 링크 건다.
+
+```
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  ul
+    li '/' - API 목록
+
+  script(src="components/underscore/underscore.js")
+  script(src="components/moment/moment.js")
+  script(src="components/jquery/dist/jquery.js")
+```
+그리고 브라우저에서 라이브러리가 제대로 링크됐는지 확인해보자. 
+
+## Yeoman에서 개발한 공식 제너레이터 살펴보기
+이제는 다른 제너레이터도 살펴보자. Yeoman 개발팀에서도 몇몇 제너레이터를 만들었는데, 기본 가이드에도 있는 webapp 제너레이터부터 살펴보자.
+
+이제 설치에 대한 설명은 따로 하지 않아도 될것 같다. 알아서 하자!
+```
+$> npm install -g generator-webapp
+$> mkdir webapp
+$> cd webapp
+$> yo webapp
+
+     _-----_
+    |       |
+    |--(o)--|   .--------------------------.
+   `---------´  |    Welcome to Yeoman,    |
+    ( _´U`_ )   |   ladies and gentlemen!  |
+    /___A___\   '__________________________'
+     |  ~  |
+   __'.___.'__
+ ´   `  |° ´ Y `
+
+Out of the box I include HTML5 Boilerplate, jQuery, and a Gruntfile.js to build your app.
+[?] What more would you like?
+❯⬢ Bootstrap
+ ⬡ Sass with Compass
+ ⬡ Modernizr
+```
 
 
 
@@ -213,3 +301,4 @@ Waiting...Express server listening on port 3000
 [2]:http://stackoverflow.com/questions/18212175/npm-yo-keeps-asking-for-sudo-permission/18277225#18277225
 [3]:https://github.com/edwardhotchkiss/grunt-develop
 [4]:https://github.com/gruntjs/grunt-contrib-watch
+[5]:http://localhost:3000
