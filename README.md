@@ -7,8 +7,8 @@
 
 ## 팀 발표
  - 2014.03.05 [Grunt 빌드와 Front-End 최적화 빌드 만들기][2]
- - 2014.03.-- [Yeoman으로 빠른 웹 개발 환경 구축하기][3]
+ - 2014.04.02 [Yeoman으로 빠른 웹 개발 환경 구축하기][3]
 
 [1]:https://github.com/miconblog/Slide/tree/master/20140224
 [2]:https://github.com/miconblog/Slide/tree/master/20140305
-[3]:https://github.com/miconblog/Slide/tree/master/20140312
+[3]:https://github.com/miconblog/Slide/tree/master/20140402
